@@ -31,7 +31,7 @@ npm install -g flop-network-toolkit
 
 ### Option 2: From Source
 ```bash
-git clone https://github.com/Coinhunter06/flop-network-toolkit.git
+git clone https://github.com/alpertungax1/flop-network-toolkit.git
 cd flop-network-toolkit
 npm install
 npm run build
@@ -133,7 +133,7 @@ Flop Network, yapay zeka ajanları için özel olarak geliştirilmiş bir Substr
 
 1. **Projeyi Klonlayın ve Derleyin:**
    ```bash
-   git clone https://github.com/Coinhunter06/flop-network-toolkit.git
+   git clone https://github.com/alpertungax1/flop-network-toolkit.git
    cd flop-network-toolkit
    npm install
    npm run build

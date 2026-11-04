@@ -25,7 +25,11 @@
     "faucet",
     "web3"
   ],
-  "author": "Coinhunter06 / Özkan UĞUR",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alpertungax1/flop-network-toolkit.git"
+  },
+  "author": "alpertungax1",
   "license": "MIT",
   "dependencies": {
     "commander": "^12.1.0",
