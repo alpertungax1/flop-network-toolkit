@@ -1,0 +1,79 @@
+name: Run Flop Toolkit (Cloud)
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'Operation to Run'
+        required: true
+        default: 'health'
+        type: choice
+        options:
+          - health
+          - models
+          - faucet_quick
+          - faucet_human
+          - balance
+      recipient_address:
+        description: 'Flop SS58 Address (required for faucet & balance)'
+        required: false
+        type: string
+
+jobs:
+  run-toolkit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies & Build
+        run: |
+          npm ci
+          npm run build
+
+      - name: Health Check
+        if: ${{ inputs.action == 'health' }}
+        run: node bin/flop-kit.js health
+
+      - name: List Models
+        if: ${{ inputs.action == 'models' }}
+        run: node bin/flop-kit.js models
+
+      - name: Check Balance
+        if: ${{ inputs.action == 'balance' }}
+        run: |
+          if [ -z "${{ inputs.recipient_address }}" ]; then
+            echo "Error: recipient_address is required for balance check"
+            exit 1
+          fi
+          node bin/flop-kit.js balance ${{ inputs.recipient_address }}
+
+      - name: Quick Faucet Claim (25 FLOP)
+        if: ${{ inputs.action == 'faucet_quick' }}
+        run: |
+          if [ -z "${{ inputs.recipient_address }}" ]; then
+            echo "Error: recipient_address is required for faucet claim"
+            exit 1
+          fi
+          node bin/flop-kit.js faucet quick ${{ inputs.recipient_address }}
+
+      - name: Verified Human Faucet Claim (500-2,000 FLOP via SIWE)
+        if: ${{ inputs.action == 'faucet_human' }}
+        env:
+          EVM_PRIVATE_KEY: ${{ secrets.EVM_PRIVATE_KEY }}
+        run: |
+          if [ -z "${{ inputs.recipient_address }}" ]; then
+            echo "Error: recipient_address is required for verified human faucet claim"
+            exit 1
+          fi
+          if [ -z "$EVM_PRIVATE_KEY" ]; then
+            echo "Error: EVM_PRIVATE_KEY secret is not set in repository Secrets"
+            exit 1
+          fi
+          node bin/flop-kit.js faucet human ${{ inputs.recipient_address }} --evm-key-env EVM_PRIVATE_KEY

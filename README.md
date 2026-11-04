@@ -2,10 +2,37 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Flop Network: Devnet](https://img.shields.io/badge/Flop_Network-Devnet-purple.svg)](https://flop.network)
-[![Node: >=18](https://img.shields.io/badge/Node->=18-green.svg)](https://nodejs.org)
-[![TypeScript: 5.6](https://img.shields.io/badge/TypeScript-5.6-blue.svg)](https://www.typescriptlang.org)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/alpertungax1/flop-network-toolkit)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/alpertungax1/flop-network-toolkit)
 
 An all-in-one developer suite and automation CLI for **Flop Network** (`tzkv-runtime` Substrate L1). Effortlessly manage Substrate keystores, bridge EVM identities via EIP-4361 (SIWE) for the Verified Human faucet tier (500–2,000 FLOP), check RPC health, and interact with on-chain AI models.
+
+---
+
+## ☁️ Zero-Install Cloud Quickstart (Tarayıcıdan Kurulumsuz Çalıştırma)
+
+You do **NOT** need to install anything on your personal computer to run this toolkit. You can run it entirely in the cloud using two methods:
+
+### Method 1: GitHub Codespaces (1-Click In-Browser Terminal)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/alpertungax1/flop-network-toolkit)
+
+1. Click the **Open in GitHub Codespaces** badge above (or click the green `<> Code` button at the top right of this repository -> **Codespaces** -> **Create codespace on main**).
+2. GitHub will automatically provision a cloud Linux terminal with Node.js 20, install all dependencies, build the project, and link the CLI.
+3. Once the terminal opens in your browser, run:
+   ```bash
+   flop-kit health
+   flop-kit models
+   flop-kit faucet quick <YOUR_SS58_ADDRESS>
+   ```
+
+### Method 2: GitHub Actions (No Terminal Needed - Button Trigger)
+1. Fork this repository to your GitHub account.
+2. *(Optional for Verified Human claim)*: Go to **Settings** -> **Secrets and variables** -> **Actions** -> Add secret `EVM_PRIVATE_KEY`.
+3. Go to the **Actions** tab in your repository.
+4. Click on **Run Flop Toolkit (Cloud)** in the left sidebar.
+5. Click the **Run workflow** button, pick your operation (`health`, `faucet_quick`, `faucet_human`, `balance`, `models`), enter your address, and run!
+
+---
 
 ---
 
@@ -131,6 +158,17 @@ console.log('Faucet result:', result);
 
 Flop Network, yapay zeka ajanları için özel olarak geliştirilmiş bir Substrate L1 ağıdır. Bu araç kiti; testnet token alımını, EIP-4361 (SIWE) imzalamasını ve anahtar yönetimini tek komutla otomatikleştirir.
 
+### 🌐 Seçenek 1: Bilgisayara Hiçbir Şey Kurmadan (GitHub Codespaces ile Doğrudan Tarayıcıda)
+1. Reponun en üstündeki **Open in GitHub Codespaces** butonuna tıklayın (veya yeşil `<> Code` butonundan **Codespaces** -> **Create codespace on main** seçin).
+2. GitHub bulut üzerinde sizin için hazır bir terminal açacaktır (Node.js ve tüm bağımlılıklar otomatik kurulur).
+3. Açılan tarayıcı terminalinde doğrudan çalıştırın:
+   ```bash
+   flop-kit health
+   flop-kit models
+   flop-kit faucet quick <SS58_ADRESINIZ>
+   ```
+
+### 💻 Seçenek 2: Kendi Bilgisayarınıza Kurarak
 1. **Projeyi Klonlayın ve Derleyin:**
    ```bash
    git clone https://github.com/alpertungax1/flop-network-toolkit.git
