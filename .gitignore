@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build output
+dist/
+build/
+*.tsbuildinfo
+
+# Sensitive credentials & keys (NON-NEGOTIABLE)
+.env
+.env.*
+!.env.example
+*.keystore.json
+*keystore*.json
+*_vault.json
+*.key
+*.pem
+*.seed
+
+# Chrome profiles & screenshots
+profiles/
+profile_*/
+screenshots/
+*.png
+
+# Logs & temp
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+tmp/
+temp/
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo

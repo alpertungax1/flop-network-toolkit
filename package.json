@@ -1,0 +1,42 @@
+{
+  "name": "flop-network-toolkit",
+  "version": "1.0.0",
+  "description": "All-in-one developer automation toolkit and CLI for Flop Network Devnet & Testnet",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "flop-kit": "./bin/flop-kit.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/cli.ts",
+    "start": "node bin/flop-kit.js",
+    "health": "tsx src/cli.ts health",
+    "models": "tsx src/cli.ts models"
+  },
+  "keywords": [
+    "flop-network",
+    "testnet",
+    "devnet",
+    "substrate",
+    "ai-agents",
+    "siwe",
+    "faucet",
+    "web3"
+  ],
+  "author": "Coinhunter06 / Özkan UĞUR",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^12.1.0",
+    "dotenv": "^16.4.5",
+    "ethers": "^6.13.4",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.0",
+    "@types/ws": "^8.5.12",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3"
+  }
+}
